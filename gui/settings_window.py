@@ -161,21 +161,21 @@ class SettingsWindow(tk.Toplevel):
         string_entry = ttk.Entry(main_frame, textvariable=self.mjapi_url_var, width=std_wid*4)
         string_entry.grid(row=cur_row, column=1,columnspan=3,  **args_entry)
         
-        # MJAPI user
-        cur_row += 1
-        _label = ttk.Label(main_frame, text=self.st.lan().MJAPI_USER)
-        _label.grid(row=cur_row, column=0, **args_label)
-        self.mjapi_user_var = tk.StringVar(value=self.st.mjapi_user)
-        string_entry = ttk.Entry(main_frame, textvariable=self.mjapi_user_var, width=std_wid)
-        string_entry.grid(row=cur_row, column=1, **args_entry)   
-        
-        # MJAPI secret
-        cur_row += 1
-        _label = ttk.Label(main_frame, text=self.st.lan().MJAPI_SECRET)
-        _label.grid(row=cur_row, column=0, **args_label)
-        self.mjapi_secret_var = tk.StringVar(value=self.st.mjapi_secret)
-        string_entry = ttk.Entry(main_frame, textvariable=self.mjapi_secret_var,width=std_wid*4)
-        string_entry.grid(row=cur_row, column=1,columnspan=3,  **args_entry)
+        # # MJAPI user
+        # cur_row += 1
+        # _label = ttk.Label(main_frame, text=self.st.lan().MJAPI_USER)
+        # _label.grid(row=cur_row, column=0, **args_label)
+        # self.mjapi_user_var = tk.StringVar(value=self.st.mjapi_user)
+        # string_entry = ttk.Entry(main_frame, textvariable=self.mjapi_user_var, width=std_wid)
+        # string_entry.grid(row=cur_row, column=1, **args_entry)
+        #
+        # # MJAPI secret
+        # cur_row += 1
+        # _label = ttk.Label(main_frame, text=self.st.lan().MJAPI_SECRET)
+        # _label.grid(row=cur_row, column=0, **args_label)
+        # self.mjapi_secret_var = tk.StringVar(value=self.st.mjapi_secret)
+        # string_entry = ttk.Entry(main_frame, textvariable=self.mjapi_secret_var,width=std_wid*4)
+        # string_entry.grid(row=cur_row, column=1,columnspan=3,  **args_entry)
         
         # MJAPI model
         cur_row += 1
@@ -293,8 +293,8 @@ class SettingsWindow(tk.Toplevel):
         akagi_url_new = self.akagiot_url_var.get()
         akagi_apikey_new = self.akagiot_apikey_var.get()
         mjapi_url_new = self.mjapi_url_var.get()
-        mjapi_user_new = self.mjapi_user_var.get()
-        mjapi_secret_new = self.mjapi_secret_var.get()
+        # mjapi_user_new = self.mjapi_user_var.get()
+        # mjapi_secret_new = self.mjapi_secret_var.get()
         mjapi_model_select_new = self.mjapi_model_select_var.get()        
         if (
             self.st.model_type != model_type_new or
@@ -303,8 +303,8 @@ class SettingsWindow(tk.Toplevel):
             self.st.akagi_ot_url != akagi_url_new or
             self.st.akagi_ot_apikey != akagi_apikey_new or
             self.st.mjapi_url != mjapi_url_new or
-            self.st.mjapi_user != mjapi_user_new or
-            self.st.mjapi_secret != mjapi_secret_new or 
+            # self.st.mjapi_user != mjapi_user_new or
+            # self.st.mjapi_secret != mjapi_secret_new or
             self.st.mjapi_model_select != mjapi_model_select_new
         ):
             self.model_updated = True
@@ -338,8 +338,8 @@ class SettingsWindow(tk.Toplevel):
         self.st.akagi_ot_url = akagi_url_new
         self.st.akagi_ot_apikey = akagi_apikey_new
         self.st.mjapi_url = mjapi_url_new
-        self.st.mjapi_user = mjapi_user_new
-        self.st.mjapi_secret = mjapi_secret_new
+        # self.st.mjapi_user = mjapi_user_new
+        # self.st.mjapi_secret = mjapi_secret_new
         self.st.mjapi_model_select = mjapi_model_select_new
         
         self.st.auto_idle_move = self.auto_idle_move_var.get()

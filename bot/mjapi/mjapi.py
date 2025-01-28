@@ -63,16 +63,23 @@ class MjapiClient:
         res_json = self.post_req(path, json=data)
         return res_json
 
-    def login(self, name, secret):
-        """Login with name and secret. save token if success. otherwise raise error """
-        path = '/user/login'
-        data = {'name': name, 'secret': secret}
-        res_json = self.post_req(path, json=data)
-        if 'id' in res_json:
-            self.token = res_json['id']
-            self.set_bearer_token(self.token)
-        else:
-            raise RuntimeError(f"Error login: {res_json}")
+    # def login(self, code):
+    #     """Login with trial code. save token if success. otherwise raise error """
+    #     path = '/user/trial'
+    #     data = {'code': code}
+    #     res_json = self.post_req(path, json=data)
+    #     if 'id' in res_json:
+    #         self.token = res_json['id']
+    #         self.set_bearer_token(self.token)
+    #     else:
+    #         raise RuntimeError(f"Error login: {res_json}")
+
+    def login_with_session(self, session_id):
+        """Login using an existing session ID. Directly set bearer token."""
+        if not session_id:
+            raise ValueError("Session ID cannot be empty.")
+        self.token = session_id
+        self.set_bearer_token(self.token)
 
     def get_user_info(self):
         """Get current user info."""
@@ -80,11 +87,11 @@ class MjapiClient:
         res_json = self.get_req(path)
         return res_json
 
-    def logout(self):
-        """Logout the current user."""
-        path = '/user/logout'
-        res_json = self.post_req(path)
-        return res_json
+    # def logout(self):
+    #     """Logout the current user."""
+    #     path = '/user/logout'
+    #     res_json = self.post_req(path)
+    #     return res_json
 
     def list_models(self) -> list[str]:
         """Return list of available models."""

@@ -11,6 +11,9 @@ DEFAULT_SETTING_FILE = 'settings.json'
 class Settings:
     """ Settings class to load and save settings to json file"""
     def __init__(self, json_file:str=DEFAULT_SETTING_FILE) -> None:
+        '手动填写session'
+        self.mjapi_session_id = 'whx1RZqCITTJibegs4hP4ZIDKGPXLkuaNYFY3RyVb4k='
+
         self._json_file = json_file
         self._settings_dict:dict = self.load_json()        
         # read settings or set default values
